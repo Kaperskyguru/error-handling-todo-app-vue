@@ -1,19 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <Todo :todo="todo" v-for="todo in todos" :key="todo.id" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Todo from "./components/Todo.vue";
+import { mapState } from "vuex";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    Todo
+  },
+  computed: {
+    ...mapState({
+      todos: state => state.todos
+    })
+  },
+  created() {
+    this.$store.dispatch("getTodos");
+    this.$store.dispatch("getUsers");
   }
-}
+};
 </script>
 
 <style>
