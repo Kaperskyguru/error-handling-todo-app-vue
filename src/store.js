@@ -21,7 +21,6 @@ const store = new Vuex.Store({
         const { data } = response;
         commit("STORE_TODOS", data);
       } catch (error) {
-        // Handling HTTPs Errors
         commit("STORE_ERRORS", error);
       }
     },
@@ -34,7 +33,6 @@ const store = new Vuex.Store({
         const { data } = response;
         commit("STORE_USERS", data);
       } catch (error) {
-        // Handling HTTPs Errors
         commit("STORE_ERRORS", error);
       }
     },
