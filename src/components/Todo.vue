@@ -2,23 +2,13 @@
   <div class="hello">
     <ul>
       <li>
-        <a href="https://vuejs.org" target="_blank" rel="noopener">{{
-          todo.title
-        }}</a>
+        <a href="https://vuejs.org" target="_blank" rel="noopener">{{todo.title}}</a>
       </li>
       <li>
-        <a href="https://forum.vuejs.org" target="_blank" rel="noopener">{{
-          todo.completed
-        }}</a>
+        <a href="https://forum.vuejs.org" target="_blank" rel="noopener">{{todo.completed}}</a>
       </li>
       <li>
-        <a
-          @click.prevent="displayAlert"
-          href="https://forum.vuejs.org"
-          target="_blnk"
-          rel="noopener"
-          >{{ getUserName(todo.userId) }}</a
-        >
+        <a href="https://forum.vuejs.org" target="_blnk" rel="noopener">{{getUserName(todo.userId)}}</a>
       </li>
     </ul>
   </div>
@@ -26,39 +16,25 @@
 
 <script>
 import { mapGetters } from "vuex";
-import ErrorService from "../Services/ErrorService";
-
 export default {
   name: "HelloWorld",
   props: {
-    todo: Object,
+    todo: Object
   },
   computed: {
-    ...mapGetters(["getUser"]),
+    ...mapGetters(["getUser"])
   },
 
   methods: {
     getUserName(id) {
       const user = this.getUser(id);
       if (user) return user.username;
-    },
-
-    // Handling Errors in component
-    methodThrowsException() {
-      try {
-        // Do unexpected job
-      } catch (error) {
-        ErrorService.onError(error);
-      }
-    },
-
-    displayAlert() {
-      ErrorService.displayErrorAlert("Testing message");
-    },
-  },
+    }
+  }
 };
 </script>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;
