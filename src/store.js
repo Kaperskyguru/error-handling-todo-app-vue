@@ -2,10 +2,12 @@ import Vue from "vue";
 import Vuex from "vuex";
 import { ErrorService } from "./Services/ErrorService";
 import axios from "axios";
+import vuexSlackNotifier from "./plugins/vuex-slack-notifier";
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
+  plugins: [vuexSlackNotifier],
   state: {
     todos: [],
     errors: [],
